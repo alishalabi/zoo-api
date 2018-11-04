@@ -39,13 +39,13 @@ app.post(`/animals`, (req, res) => {
 
 // Action: Show One
 app.get(`/animals/:id`, (req, res) => {
-  animalID = req.body.id
-  res.status(200).send(zooAnimal[animalID])
+  animalID = req.params.id
+  res.status(200).send(zooAnimals[animalID])
 })
 
 // Action: Update
 app.put(`/animals/:id`, (req, res) => {
-  animalID = req.body.id
+  animalID = req.params.id
   animal = {
     name: req.body.name,
     color: req.body.color
@@ -56,7 +56,7 @@ app.put(`/animals/:id`, (req, res) => {
 
 // Action: Destroy
 app.delete(`/animals/:id`, (req, res) => {
-  animalID = req.body.id
+  animalID = req.params.id
   removedAnimal = zooAnimals[animalID]
   delete zooAnimals[animalID]
   res.status(200).send(removedAnimal)
